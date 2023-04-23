@@ -4,10 +4,13 @@ import Nav from './components/Nav';
 import About from './components/About'
 import Detail from './components/Detail';
 import Form from './components/Form';
-import Favorites from './components/favorites';
+import Favorites from './components/Favorites';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+
+const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
+const API_KEY = '82efe7d6bbe4.e2e05f4807d513af27e6';
 
 const email = 'abrilbonaudo@gmail.com';
 const password = 'eri1234';
@@ -30,7 +33,7 @@ function App() {
    }, [access])
 
    const onSearch = (id) => {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      axios(`${URL_BASE}/${API_KEY}/${id}`).then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
@@ -56,7 +59,7 @@ function App() {
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About/>} />
             <Route path='/detail/:id' element={<Detail/>} />
-            
+            <Route path='/favorites' element={<Favorites/>} />
          </Routes>
       </div>
    );

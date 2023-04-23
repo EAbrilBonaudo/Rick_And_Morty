@@ -11,17 +11,10 @@ const Nav = ({ onSearch, setAccess }) => {
     return (
         <nav>
             <SearchBar onSearch={onSearch} />
-            <button>
-                <Link to='/about'>ABOUT</Link>
-            </button>
-
-            <button>
-                <Link to='/home'>HOME</Link>
-            </button>
-
-            <button>
-                <Link to='/favorites'>FAVORITES</Link>
-            </button>
+            
+            <Link to='/about'> ABOUT </Link>
+            <Link to='/home'> HOME </Link>
+            <Link to='/favorites'> Favorites </Link>
 
             <button onClick={handleLogOut}>LOG OUT</button>
         </nav>
